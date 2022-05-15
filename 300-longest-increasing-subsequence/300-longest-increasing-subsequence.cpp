@@ -1,31 +1,34 @@
 class Solution {
 public:
-    
-    
-    int f(int ind,int prev,int n,vector<vector<int>>& dp,vector<int>& nums)
-    {
-        if(ind==n)
-        {
-            return 0;
-        }
-        if(dp[ind][prev+1]!=-1)
-        {
-            
-            
-            return dp[ind][prev+1];
-        }
-        int len=0+f(ind+1,prev,n,dp,nums);
-        if(prev==-1||nums[ind]>nums[prev])
-        {
-            len=max(len,1+f(ind+1,ind,n,dp,nums));
-        }
-       return dp[ind][prev+1]=len;
-    }
-    
     int lengthOfLIS(vector<int>& nums) {
         
-    int n=nums.size();
-    vector<vector<int>>dp(n,vector<int>(n+1,-1));
-    return f(0,-1,n,dp,nums);
+      vector<int> v;// empty vector
+        for(int i=0;i<nums.size();i++)
+        {
+            auto it=lower_bound(v.begin(),v.end(),nums[i]);  //check whether lower bound of current element of nums is availale or not in v vector if available that meanns it point to that position if not then it points to v.end .
+            if(it==v.end())                                  // if not available push this element as it is larger then all
+                v.push_back(nums[i]);
+            else
+                *it=nums[i];                                 //if available then change that element with this element 
+        }
+                                                               //in this method we did not get v same increasing numbers but we get exact count  to get that we can change our code
+        return v.size();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
 };
