@@ -20,10 +20,10 @@ public:
             tmp[9]=(v[2]+v[4])%mod;
             for(int i=0;i<10;i++)
                 v[i]=tmp[i];
-        }
+        }    
         int sum=0;
         for(int i=0;i<10;i++)
-            sum=(sum+v[i])%mod;
+            sum=(sum+v[i])%mod; 
         return sum;
     
     }
